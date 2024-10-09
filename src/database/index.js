@@ -1,7 +1,12 @@
 import { Sequelize } from 'sequelize';
+import mongoose from 'mongoose';
+
+//Models
 import User from '../app/models/User';
 import Product from '../app/models/Products';
 import Category from '../app/models/Category';
+
+//Config
 import configDatabase from '../config/database';
 
 const models = [User, Product, Category];
@@ -9,6 +14,7 @@ const models = [User, Product, Category];
 class Database {
 	constructor() {
 		this.init();
+		this.mongo();
 	}
 
 	init() {
@@ -16,6 +22,10 @@ class Database {
 		models
 			.map((model) => model.init(this.connection))
 			.map((model) => model.associate && model.associate(this.connection.models));
+	}
+
+	mongo() {
+		this.mongoConnection = mongoose.connect('mongodb://localhost:27017/devburger');
 	}
 }
 
