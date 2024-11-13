@@ -19,6 +19,10 @@ const routes = new Router();
 
 const upload = multer(multerConfig);
 
+routes.get('/', (req, res) => {
+	return res.json({ message: 'DevBurger API :)' });
+});
+
 routes.post('/users', UserController.store);
 routes.post('/session', SessionController.store);
 
