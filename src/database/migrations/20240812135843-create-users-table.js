@@ -5,7 +5,7 @@ const { INTEGER } = require('sequelize');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
 	async up(queryInterface, Sequelize) {
-		await queryInterface.createTable('users', {
+		await queryInterface.createTable('Users', {
 			id: {
 				primaryKey: true,
 				allowNull: false, //campo obrigatório
@@ -31,12 +31,12 @@ module.exports = {
 				type: Sequelize.BOOLEAN,
 				defaultValue: false,
 			},
-			created_at: {
+			createdAt: {
 				//auditoria data de criacao
 				type: Sequelize.DATE,
 				allowNull: false,
 			},
-			updated_at: {
+			updatedAt: {
 				//auditoria data de update
 				type: Sequelize.DATE,
 				allowNull: false,
@@ -45,6 +45,6 @@ module.exports = {
 	},
 
 	async down(queryInterface) {
-		await queryInterface.dropTable('users');
+		await queryInterface.dropTable('Users');
 	},
 };

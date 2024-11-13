@@ -104,7 +104,7 @@ class CategoryController {
 			},
 		);
 
-		return response.status(200);
+		return response.status(200).json({ success: true, message: 'Categoria atualizada com sucesso' });
 	}
 
 	//Listar
